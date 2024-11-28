@@ -8,7 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { Order } from "../types/Order";
 
 const OrdersPage: React.FC = () => {
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
     const { orders, setOrders, totalOrderValue } = useOrders();
     const [editingOrder, setEditingOrder] = useState<Order | null>(null);
 
@@ -26,8 +26,19 @@ const OrdersPage: React.FC = () => {
             </header>
 
             <div className="flex justify-end mb-6">
-                <div>
+                <div className="flex flex-col items-center justify-between bg-white p-4 rounded shadow mb-6 w-1/4">
+                    {/* User Information */}
+                    <img
+                        src={user.avatar || '/avatar-image.png'} // Replace 'user.picture' with the correct field if it's different
+                        alt={user.name}
+                        className="w-24 h-30 rounded-full"
+                    />
+                    <div className="flex flex-col items-center">
+                        <h2 className="text-lg font-semibold">{user.name}</h2>
+                        <p className="text-sm text-gray-600">{user.email}</p>
+                    </div>
 
+                    {/* Logout Button */}
                     <button
                         onClick={logout}
                         className="px-4 py-2 bg-red-500 text-white rounded-lg"
@@ -35,6 +46,7 @@ const OrdersPage: React.FC = () => {
                         Logout
                     </button>
                 </div>
+
                 {/* New Order Form */}
                 <div className=" mb-6 ml-auto w-1/2">
                     <NewOrderForm />

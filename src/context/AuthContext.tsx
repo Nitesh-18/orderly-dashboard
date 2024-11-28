@@ -33,15 +33,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const fetchUser = async () => {
             try {
                 const user = await account.get();
+                console.log("Fetched User:", user); // Debug user details
                 setUser(user);
             } catch {
                 setUser(null);
             }
         };
-
+        
         fetchUser();
     }, []);
-
     return (
         <AuthContext.Provider value={{ user, loginWithGoogle, logout }}>
             {children}

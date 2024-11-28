@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
     return (
-        <div className="mb-4">
+        <div className="w-1/3 mb-4">
             <input
                 type="text"
                 placeholder="Search by Customer Name, Email, or Order ID"
