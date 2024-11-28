@@ -29,7 +29,7 @@ const OrdersPage: React.FC = () => {
                 <div className="flex flex-col items-center justify-between bg-white p-4 rounded shadow mb-6 w-1/4">
                     {/* User Information */}
                     <img
-                        src={user.avatar || '/avatar-image.png'} // Replace 'user.picture' with the correct field if it's different
+                        src={user.avatar || '/avatar-image.png'} 
                         alt={user.name}
                         className="w-24 h-30 rounded-full"
                     />
@@ -52,9 +52,6 @@ const OrdersPage: React.FC = () => {
                     <NewOrderForm />
                 </div>
             </div>
-
-
-
 
             {/* Order List */}
             <OrderList orders={orders} onEditOrder={setEditingOrder} />
