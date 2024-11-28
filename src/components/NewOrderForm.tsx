@@ -43,64 +43,76 @@ const NewOrderForm: React.FC = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4 bg-white p-4 rounded shadow-md">
-            <h2 className="text-xl font-bold mb-4">Create New Order</h2>
+        <form onSubmit={handleSubmit} className="space-y-6 bg-gray-700 p-6 rounded-lg shadow-lg">
+            {/* Form Title */}
+            <h2 className="text-2xl font-extrabold text-white mb-6 text-center">
+                Create New Order
+            </h2>
+    
+            {/* Customer Name and Email */}
             <div className="flex gap-4 justify-between">
                 <div className="w-full">
-                    <label className="block text-gray-700 w-full">Customer Name</label>
+                    <label className="block text-gray-300 mb-2">Customer Name</label>
                     <input
                         type="text"
                         name="customer_name"
                         value={formData.customer_name}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter customer's name"
                     />
                 </div>
                 <div className="w-full">
-                    <label className="block text-gray-700">Customer Email</label>
+                    <label className="block text-gray-300 mb-2">Customer Email</label>
                     <input
                         type="email"
                         name="customer_email"
                         value={formData.customer_email}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter customer's email"
                     />
                 </div>
             </div>
-            <div className="flex gap-2 justify-stretch">
-                <div className="w-1/4">
-                    <label className="block text-gray-700">Product</label>
+    
+            {/* Product and Quantity */}
+            <div className="flex gap-4 justify-between">
+                <div className="w-1/3">
+                    <label className="block text-gray-300 mb-2">Product</label>
                     <select
                         name="product"
                         value={formData.product}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     >
                         <option value="Product 1">Product 1</option>
                         <option value="Product 2">Product 2</option>
                         <option value="Product 3">Product 3</option>
                     </select>
                 </div>
-                <div className="w-1/5">
-                    <label className="block text-gray-700">Quantity</label>
+                <div className="w-1/4">
+                    <label className="block text-gray-300 mb-2">Quantity</label>
                     <input
                         type="number"
                         name="quantity"
                         value={formData.quantity}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         min="1"
                     />
                 </div>
             </div>
+    
+            {/* Submit Button */}
             <button
                 type="submit"
-                className="px-4 py-2 bg-green-500 text-white rounded"
+                className="w-full px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-500 transform hover:scale-105 transition-all duration-300"
             >
                 Add Order
             </button>
         </form>
     );
+    
 };
 
 export default NewOrderForm;

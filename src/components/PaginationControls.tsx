@@ -12,26 +12,40 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
     setCurrentPage,
 }) => {
     return (
-        <div className="flex justify-center items-center mt-4 space-x-4">
+        <div className="flex justify-center items-center mt-6 space-x-6">
+            {/* Previous Button */}
             <button
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+                className={`px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300 
+                    ${currentPage === 1
+                        ? "bg-gray-600 text-gray-500 cursor-not-allowed"
+                        : "bg-blue-600 text-white hover:bg-blue-500 transform hover:scale-105"
+                    }`}
             >
                 Previous
             </button>
-            <span className="text-gray-700">
+
+            {/* Current Page Indicator */}
+            <span className="text-white text-lg font-medium">
                 Page {currentPage} of {totalPages}
             </span>
+
+            {/* Next Button */}
             <button
                 onClick={() => setCurrentPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+                className={`px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300 
+                    ${currentPage === totalPages
+                        ? "bg-gray-600 text-gray-500 cursor-not-allowed"
+                        : "bg-blue-600 text-white hover:bg-blue-500 transform hover:scale-105"
+                    }`}
             >
                 Next
             </button>
         </div>
     );
+
 };
 
 export default PaginationControls;

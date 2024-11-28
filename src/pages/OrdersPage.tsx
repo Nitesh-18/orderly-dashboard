@@ -36,7 +36,7 @@ const OrdersPage: React.FC = () => {
                 {/* User Information */}
                 <div className="flex flex-col items-center bg-gray-700 p-6 rounded-lg shadow-lg space-y-4">
                     <img
-                        src={user.avatar || "/avatar-image.png"} // Replace with a default avatar if needed
+                        src={user.avatar || "/avatar-image.png"}
                         alt={user.name}
                         className="w-24 h-24 rounded-full"
                     />
@@ -53,15 +53,13 @@ const OrdersPage: React.FC = () => {
                 </div>
 
                 {/* New Order Form */}
-                <div className="w-2/3 bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div className="w-2/3 bg-transparent p-6 rounded-lg shadow-lg">
                     <NewOrderForm />
                 </div>
             </div>
 
             {/* Order List */}
-            <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
-                <OrderList orders={orders} onEditOrder={setEditingOrder} />
-            </div>
+            <OrderList orders={orders} onEditOrder={setEditingOrder} />
 
             {/* Edit Order Modal */}
             {editingOrder && (
