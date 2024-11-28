@@ -15,46 +15,53 @@ const OrdersPage: React.FC = () => {
     useEffect(() => setOrders(sampleData), [setOrders]);
 
     return (
-        <div className="min-h-screen p-6 bg-gray-100">
+        <div className="min-h-screen p-6 bg-gradient-to-b from-gray-800 to-black text-white">
             {/* Header */}
             <header className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold ">Orderly Dashboard</h1>
+                <h1 className="text-4xl font-extrabold tracking-wide">
+                    Orderly <span className="text-blue-500">Dashboard</span>
+                </h1>
 
-                <div className="p-4 w-1/4 bg-yellow-300 rounded shadow">
-                    <h2 className="text-xl font-semibold">Total Order Value: <span className="text-green-500 font-mono">${totalOrderValue}</span></h2>
+                {/* Total Order Value */}
+                <div className="p-4 bg-gray-700 rounded shadow-lg">
+                    <h2 className="text-xl font-semibold">
+                        Total Order Value:{" "}
+                        <span className="text-green-400 font-mono">${totalOrderValue}</span>
+                    </h2>
                 </div>
             </header>
 
-            <div className="flex justify-end mb-6">
-                <div className="flex flex-col items-center justify-between bg-white p-4 rounded shadow mb-6 w-1/4">
-                    {/* User Information */}
+            {/* User Info & New Order Form */}
+            <div className="flex justify-between items-start mb-6">
+                {/* User Information */}
+                <div className="flex flex-col items-center bg-gray-700 p-6 rounded-lg shadow-lg space-y-4">
                     <img
-                        src={user.avatar || '/avatar-image.png'} 
+                        src={user.avatar || "/avatar-image.png"} // Replace with a default avatar if needed
                         alt={user.name}
-                        className="w-24 h-30 rounded-full"
+                        className="w-24 h-24 rounded-full"
                     />
-                    <div className="flex flex-col items-center">
+                    <div className="text-center">
                         <h2 className="text-lg font-semibold">{user.name}</h2>
-                        <p className="text-sm text-gray-600">{user.email}</p>
+                        <p className="text-sm text-gray-400">{user.email}</p>
                     </div>
-
-                    {/* Logout Button */}
                     <button
                         onClick={logout}
-                        className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                        className="px-6 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
                     >
                         Logout
                     </button>
                 </div>
 
                 {/* New Order Form */}
-                <div className=" mb-6 ml-auto w-1/2">
+                <div className="w-2/3 bg-gray-700 p-6 rounded-lg shadow-lg">
                     <NewOrderForm />
                 </div>
             </div>
 
             {/* Order List */}
-            <OrderList orders={orders} onEditOrder={setEditingOrder} />
+            <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
+                <OrderList orders={orders} onEditOrder={setEditingOrder} />
+            </div>
 
             {/* Edit Order Modal */}
             {editingOrder && (
