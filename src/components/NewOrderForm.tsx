@@ -21,6 +21,7 @@ const NewOrderForm: React.FC = () => {
         addOrder({
             ...formData,
             id: Date.now().toString(),
+            product: formData.product as "Product 1" | "Product 2" | "Product 3", // 👈 Cast here
             quantity: Number(formData.quantity),
             order_value: calculateOrderValue(formData.product, Number(formData.quantity)),
         });
@@ -32,6 +33,7 @@ const NewOrderForm: React.FC = () => {
             quantity: 1,
         });
     };
+
 
     const calculateOrderValue = (product: string, quantity: number) => {
         const prices: Record<string, number> = {
@@ -48,7 +50,7 @@ const NewOrderForm: React.FC = () => {
             <h2 className="text-2xl font-extrabold text-white mb-6 text-center">
                 Create New Order
             </h2>
-    
+
             {/* Customer Name and Email */}
             <div className="flex gap-4 justify-between">
                 <div className="w-full">
@@ -74,7 +76,7 @@ const NewOrderForm: React.FC = () => {
                     />
                 </div>
             </div>
-    
+
             {/* Product and Quantity */}
             <div className="flex gap-4 justify-between">
                 <div className="w-1/3">
@@ -102,7 +104,7 @@ const NewOrderForm: React.FC = () => {
                     />
                 </div>
             </div>
-    
+
             {/* Submit Button */}
             <button
                 type="submit"
@@ -112,7 +114,7 @@ const NewOrderForm: React.FC = () => {
             </button>
         </form>
     );
-    
+
 };
 
 export default NewOrderForm;

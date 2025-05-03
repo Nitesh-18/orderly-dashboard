@@ -10,11 +10,12 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<User<Preferences> | null>(null);
+
 
     const loginWithGoogle = async () => {
         try {
-            await account.createOAuth2Session('google', 'http://localhost:5173');
+            await account.createOAuth2Session('google', 'http://localhost:5173', 'http://localhost:5173/failure');
         } catch (error) {
             console.error('Login failed', error);
         }
@@ -38,7 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 setUser(null);
             }
         };
-        
+
         fetchUser();
     }, []);
     return (
